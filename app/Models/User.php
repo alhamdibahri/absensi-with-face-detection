@@ -50,9 +50,4 @@ class User extends Authenticatable
     {
         return 'That\'s a nice guy';
     }
-
-    public function adminlte_profile_url()
-    {
-        return 'profile/username';
-    }
 }

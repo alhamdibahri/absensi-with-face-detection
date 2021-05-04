@@ -69,7 +69,7 @@ return [
     'usermenu_header_class' => 'bg-primary',
     'usermenu_image' => true,
     'usermenu_desc' => true,
-    'usermenu_profile_url' => true,
+    'usermenu_profile_url' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -225,16 +225,6 @@ return [
 
     'menu' => [
         // [
-        //     'text' => 'search',
-        //     'search' => true,
-        //     'topnav' => true,
-        // ],
-        // [
-        //     'text' => 'blog',
-        //     'url'  => 'admin/blog',
-        //     'can'  => 'manage-blog',
-        // ],
-        // [
         //     'text'        => 'pages',
         //     'url'         => 'admin/pages',
         //     'icon'        => 'far fa-fw fa-file',
@@ -242,6 +232,11 @@ return [
         //     'label_color' => 'success',
         // ],
         ['header' => 'MAIN NAVIGATION'],
+        [
+            'text' => 'Dashboard',
+            'url'  => '/home',
+            'icon' => 'fas fa-fw fa-home',
+        ],
         [
             'text' => 'Data User',
             'url'  => 'users',
