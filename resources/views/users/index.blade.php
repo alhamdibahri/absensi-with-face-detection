@@ -116,7 +116,7 @@
             <form id="createForm" method="POST">
                 @csrf
             <div class="modal-body">
-                <div class="modalError"></div>
+                <div class="modalErrorEdit"></div>
                 <div class="card-body">
                     <input type="hidden" name="id" class="form-control id_user" id="exampleInputEmail1" placeholder="Masukkan Nama">
                     <div class="form-group">
@@ -136,7 +136,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary updateData">Save</button>
+              <button type="submit" class="btn btn-primary updateData">Update</button>
             
             </div>
             </form>
@@ -200,7 +200,7 @@
             }
         }
 
-        
+        //submit update data
         $( ".updateData" ).click(function(e) {
             e.preventDefault()
             let id = $('.id_user').val()
@@ -226,6 +226,17 @@
                     window.location.href = datas.url;
 
                 },
+                error: function(jqXHR, textStatus, errorThrown){
+                    var data = jqXHR.responseJSON.errors;
+                    errorsHtml = '<div class="alert alert-danger alert-dismissible fade show" role="alert"><ul>';
+
+                    $.each( data, function( key, value ) {
+                        errorsHtml += '<li style="color:white;">' + value[0] + '</li>';
+                    });
+                    errorsHtml += '</ul><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+                    $(".modalErrorEdit").html(errorsHtml);
+                    
+                }
             });
 
         });

@@ -26,7 +26,10 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/users/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
     Route::delete('/users/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy');
     //karyawan
-    Route::get('/data-karyawan', [App\Http\Controllers\KaryawanController::class, 'index']);
+    Route::get('/data-karyawan', [App\Http\Controllers\KaryawanController::class, 'index'])->name('karyawan.index');
+    Route::post('/create-karyawan', [App\Http\Controllers\KaryawanController::class, 'store'])->name('karyawan.store');
+    Route::delete('/karyawan/{id}', [App\Http\Controllers\KaryawanController::class, 'destroy'])->name('karyawan.destroy');
+    Route::put('/karyawan/{id}', [App\Http\Controllers\KaryawanController::class, 'update'])->name('karyawan.update');
 
     //home
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

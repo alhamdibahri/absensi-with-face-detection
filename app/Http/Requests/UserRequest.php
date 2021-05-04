@@ -23,10 +23,20 @@ class UserRequest extends FormRequest
      */
     public function rules()
     {
+
+        if($this->method() == "PATCH" || $this->method() == "PUT"){
+            $rules_email = "required|unique:users,email,".$this->get('id');
+            $rules_password = "nullable";
+        }else{
+            $rules_email = "required|unique:users";
+            $rules_password = "required";
+        }
+
+
         return [
             'name' => 'required',
-            'email' => 'required|unique:users',
-            'password' => 'required'
+            'email' => $rules_email,
+            'password' => $rules_password
         ];
     }
 }

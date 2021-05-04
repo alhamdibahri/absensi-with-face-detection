@@ -39,8 +39,8 @@ class UserController extends Controller
     {
         $payload = $request->all();
         $payload['password'] = \Hash::make($payload['password']);
-        User::create($payload);
         if($request->ajax()){
+            User::create($payload);
             \Session::flash('success','Data User Berhasil Di Simpan');
             $response = array(
                 'status' => 'success',
@@ -79,7 +79,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
         $users = User::findOrFail($id);
         $payload = $request->all();
