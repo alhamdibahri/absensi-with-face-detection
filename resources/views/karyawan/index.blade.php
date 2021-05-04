@@ -7,7 +7,6 @@
 @stop
 
 @section('content')
-{{-- <section class="content"> --}}
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
@@ -458,7 +457,6 @@
       <!-- /.row -->
     </div>
     <!-- /.container-fluid -->
-  {{-- </section> --}}
 @stop
 
 @section('css')
@@ -466,7 +464,7 @@
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+    {{-- <script> console.log('Hi!'); </script> --}}
     <script> 
         $ ( function () {
             $('#example2').DataTable();

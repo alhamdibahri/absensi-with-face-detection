@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Http\Requests\UserRequest;
 
 class UserController extends Controller
 {
@@ -13,7 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('users.index');
+        $users = User::all();
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -23,7 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -32,9 +35,19 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        //
+        $payload = $request->all();
+        $payload['password'] = \Hash::make($payload['password']);
+        User::create($payload);
+        if($request->ajax()){
+            \Session::flash('success','Data User Berhasil Di Simpan');
+            $response = array(
+                'status' => 'success',
+                'url' => route('users.index'),
+            );
+            return $response;
+        }
     }
 
     /**
@@ -56,7 +69,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -68,7 +81,23 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $users = User::findOrFail($id);
+        $payload = $request->all();
+        if($request->filled('password')){
+            $payload['password'] = \Hash::make($payload['password']);
+        }else{
+            $payload['password'] = $users->password;
+        }
+
+        if($request->ajax()){
+            $users->update($payload);
+            \Session::flash('success','Data User Berhasil Di Update');
+            $response = array(
+                'status' => 'success',
+                'url' => route('users.index'),
+            );
+            return $response;
+        }
     }
 
     /**
@@ -79,6 +108,16 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $users =  User::findOrFail($id);
+    
+        if($users->delete()){
+            \Session::flash('success','Data User Berhasil Di Hapus');
+            $response = array(
+                'status' => 'success',
+                'url' => route('users.index'),
+            );
+            return $response;
+        }
+
     }
 }
