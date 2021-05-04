@@ -31,6 +31,11 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/karyawan/{id}', [App\Http\Controllers\KaryawanController::class, 'destroy'])->name('karyawan.destroy');
     Route::put('/karyawan/{id}', [App\Http\Controllers\KaryawanController::class, 'update'])->name('karyawan.update');
 
+    //manage-company
+    Route::get('/manage-company', [App\Http\Controllers\CompanyController::class, 'index'])->name('company.index');
+    Route::post('/manage-company', [App\Http\Controllers\CompanyController::class, 'store'])->name('company.store');
+    Route::put('/manage-company/{id}', [App\Http\Controllers\CompanyController::class, 'update'])->name('company.update');
+
     //home
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });

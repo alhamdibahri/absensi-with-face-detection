@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAbsenTable extends Migration
+class CreateJamkerjaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateAbsenTable extends Migration
      */
     public function up()
     {
-        Schema::create('absen', function (Blueprint $table) {
+        Schema::create('jam_kerja', function (Blueprint $table) {
             $table->id();
-            $table->date('tanggal_absen');
-            $table->time('waktu_datang');
-            $table->time('waktu_pulang');
-            $table->enum('status', ['TERLAMBAT', 'TEPAT_WAKTU']);
-            $table->string('foto_absen')->nullable();
+            $table->string('hari');
+            $table->time('masuk_kerja');
+            $table->time('pulang_kerja');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateAbsenTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('absen');
+        Schema::dropIfExists('jam_kerja');
     }
 }

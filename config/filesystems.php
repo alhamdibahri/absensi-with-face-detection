@@ -35,6 +35,11 @@ return [
             'root' => public_path('foto_karyawan'),
         ],
 
+        'logo_company' => [
+            'driver' => 'local',
+            'root' => public_path('logo_company'),
+        ],
+
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),
