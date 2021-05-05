@@ -41,7 +41,7 @@ class AbsensiController extends Controller
         setlocale(LC_TIME, 'id_ID');
         Carbon::setLocale('id');
         $hari = Carbon::now()->isoFormat('dddd');
-        $jamKerja = JamKerja::where('hari', 'Senin')->first();
+        $jamKerja = JamKerja::where('hari', $hari)->first();
         if($jamKerja){
             if($jamKerja->kondisi == 'Libur'){
                 echo 'Sekarang Libur!';
