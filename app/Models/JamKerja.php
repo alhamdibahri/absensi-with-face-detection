@@ -15,6 +15,8 @@ class JamKerja extends Model
         'hari', 
         'masuk_kerja',
         'pulang_kerja',
+        'company_id',
+        'kondisi'
     ];
 
 }

@@ -13,9 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', [App\Http\Controllers\KaryawanController::class, 'welcome'])->name('karyawan.welcome');
+Route::post('/absensi', [App\Http\Controllers\AbsensiController::class, 'store'])->name('absensi.store');
 
 Auth::routes();
 
@@ -35,6 +34,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/manage-company', [App\Http\Controllers\CompanyController::class, 'index'])->name('company.index');
     Route::post('/manage-company', [App\Http\Controllers\CompanyController::class, 'store'])->name('company.store');
     Route::put('/manage-company/{id}', [App\Http\Controllers\CompanyController::class, 'update'])->name('company.update');
+
+    //data absensi
+    Route::get('/data-absensi', [App\Http\Controllers\AbsensiController::class, 'index'])->name('absensi.index');
+
+    //jam kerja
+    Route::get('/jam-kerja', [App\Http\Controllers\JamKerjaController::class, 'index'])->name('jam-kerja.index');
+    Route::post('/jam-kerja', [App\Http\Controllers\JamKerjaController::class, 'saveData'])->name('jam-kerja.saveData');
 
     //home
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

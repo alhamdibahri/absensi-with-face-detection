@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateJamkerjaTable extends Migration
+class AddColumnCompanyIdInJamKerja extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateJamkerjaTable extends Migration
      */
     public function up()
     {
-        Schema::create('jam_kerja', function (Blueprint $table) {
-            $table->id();
-            $table->string('hari');
-            $table->time('masuk_kerja')->nullable();
-            $table->time('pulang_kerja')->nullable();
-            $table->timestamps();
+        Schema::table('jam_kerja', function (Blueprint $table) {
+            $table->bigInteger('company_id');
         });
     }
 
@@ -29,6 +25,8 @@ class CreateJamkerjaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jam_kerja');
+        Schema::table('jam_kerja', function (Blueprint $table) {
+            $table->dropColumn('company_id');
+        });
     }
 }

@@ -9,6 +9,11 @@ use Storage;
 
 class KaryawanController extends Controller
 {
+
+    public function welcome(){
+        $users = Karyawan::all();
+        return view('welcome', compact('users'));
+    }
     /**
      * Display a listing of the resource.
      *

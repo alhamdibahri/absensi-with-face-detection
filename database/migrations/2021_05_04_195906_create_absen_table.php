@@ -15,9 +15,11 @@ class CreateAbsenTable extends Migration
     {
         Schema::create('absen', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('jam_kerja_id');
+            $table->bigInteger('karyawan_id');
             $table->date('tanggal_absen');
-            $table->time('waktu_datang');
-            $table->time('waktu_pulang');
+            $table->time('waktu_datang')->nullable();
+            $table->time('waktu_pulang')->nullable();
             $table->enum('status', ['TERLAMBAT', 'TEPAT_WAKTU']);
             $table->string('foto_absen')->nullable();
             $table->timestamps();

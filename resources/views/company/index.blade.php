@@ -39,7 +39,7 @@
                                         <td class="text-right">{{ $company->name }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Owner Perusahaan</th>
+                                        <th>Owner</th>
                                         <td class="text-right">{{ $company->owner }}</td>
                                     </tr>
                                     <tr>
@@ -64,7 +64,7 @@
                     <div class="row mt-5">
                         <div class="col-md-12">
                             <div class="d-flex justify-content-end">
-                                <small>Updated By {{ $company->user->name }} ({{$company->created_at}})</small> 
+                                <small>Last Updated By {{ $company->user->name }} ({{$company->created_at}})</small> 
                             </div>
                         </div>
                     </div>
@@ -82,7 +82,7 @@
             <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Create Karyawan</h5>
+                <h5 class="modal-title" id="staticBackdropLabel">Edit Profil Company</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -140,7 +140,7 @@
             <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Edit Karyawan</h5>
+                <h5 class="modal-title" id="staticBackdropLabel">Edit Profil Company</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -201,7 +201,6 @@
 @stop
 
 @section('js')
-    {{-- <script> console.log('Hi!'); </script> --}}
     <script> 
 
         @if (\Session::has('success'))

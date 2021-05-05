@@ -16,6 +16,8 @@ class Absensi extends Model
         'waktu_datang',
         'waktu_pulang',
         'status',
-        'foto_absen'
+        'foto_absen',
+        'jam_kerja_id',
+        'karyawan_id'
     ];
 }
