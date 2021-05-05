@@ -126,7 +126,11 @@ class AbsensiController extends Controller
 
             }
         }else{
-            return 'jam kerja kosong';
+            $response = array(
+                'massage' => 'isi jam kerja terlebih dahulu',
+                'status' => false,
+            );
+            return $response;
         }
     }
 
