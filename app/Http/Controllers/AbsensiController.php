@@ -44,7 +44,11 @@ class AbsensiController extends Controller
         $jamKerja = JamKerja::where('hari', $hari)->first();
         if($jamKerja){
             if($jamKerja->kondisi == 'Libur'){
-                echo 'Sekarang Libur!';
+                $response = array(
+                    'massage' => 'Sekarang Libur!',
+                    'status' => false,
+                );
+                return $response;
             }else{
                 $dateNow = Carbon::now()->isoFormat('Y-MM-DD');
                 $timeNow = Carbon::now()->toTimeString();
