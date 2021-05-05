@@ -170,7 +170,6 @@
                                     success:function(data, textStatus, jqXHR) 
                                     {
                                         var data = jqXHR.responseJSON;
-                                        console.log(data)
                                         if(data.status){
                                             container.append(image)
                                             container.append(canvas)
