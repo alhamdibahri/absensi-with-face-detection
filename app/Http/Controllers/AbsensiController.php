@@ -84,7 +84,6 @@ class AbsensiController extends Controller
                     $response = array(
                         'massage' => $message,
                         'status' => $status,
-                        'url' => route('users.index'),
                     );
                     return $response;
 

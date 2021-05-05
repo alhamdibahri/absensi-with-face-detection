@@ -176,6 +176,7 @@
                                             const box = resizedDetections[i].detection.box
                                             const drawBox = new faceapi.draw.DrawBox(box, { label: result.toString() })
                                             drawBox.draw(canvas)
+                                            alert(data.massage);
                                         }else{
                                             alert(data.massage);
                                         }
