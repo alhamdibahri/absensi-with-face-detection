@@ -16,7 +16,10 @@ class AbsensiController extends Controller
      */
     public function index()
     {
-        return view('data-absensi.index');
+        $absensi = Absensi::join('karyawan','absen.karyawan_id','=','karyawan.id')
+		->get(['karyawan.nama_karyawan','absen.*']);
+        
+        return view('data-absensi.index', ['absensi' => $absensi]);
     }
 
     /**
