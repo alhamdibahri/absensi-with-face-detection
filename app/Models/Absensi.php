@@ -20,4 +20,9 @@ class Absensi extends Model
         'jam_kerja_id',
         'karyawan_id'
     ];
+
+    public function karyawan(){
+        return $this->belongsTo(Karyawan::class, 'karyawan_id');
+    }
+
 }

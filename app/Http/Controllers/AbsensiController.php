@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Models\JamKerja;
 use App\Models\Absensi;
+use App\Models\Karyawan;
 
 class AbsensiController extends Controller
 {
@@ -14,12 +15,19 @@ class AbsensiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $absensi = Absensi::join('karyawan','absen.karyawan_id','=','karyawan.id')
-		->get(['karyawan.nama_karyawan','absen.*']);
         
-        return view('data-absensi.index', ['absensi' => $absensi]);
+        $absensi = Absensi::join('karyawan', 'karyawan.id',  '=',  'absen.karyawan_id');
+        
+        if(isset($request->date_range)){
+            $splitRange = explode(" - ", $request->date_range);
+            $absensi->whereBetween('absen.tanggal_absen', [$splitRange[0], $splitRange[1]]);
+            $absensi->where('karyawan.id', $request->nama_karyawan);
+            $absensi->where('absen.status', $request->status);
+        }
+    
+        return view('data-absensi.index', ['absensi' => $absensi->get(), 'karyawan' => Karyawan::all()]);
     }
 
     /**

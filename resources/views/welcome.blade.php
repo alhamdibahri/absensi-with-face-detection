@@ -155,9 +155,7 @@
                             if(result.label === 'unknown'){
                                 alert('wajah tidak ditemukan')
                             }else{
-                                // console.log(result)
                                 const pegawai = labels.find((data) => data.nama_karyawan === result.label)
-                                console.log(pegawai)
                                 let payload = {
                                     '_token': "{{ csrf_token() }}",
                                     'karyawan_id': pegawai.id
